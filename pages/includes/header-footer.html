@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/x-icon" href="/media/images/favicon.png">
-	
+
 	<title>KDReviews</title>
 
 	<!-- CSS stylesheets -->
@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="/css/fontawesome.css">
 	<link rel="stylesheet" href="/css/brands.css">
 	<link rel="stylesheet" href="/css/solid.css">
-
 
 	<script src="/js/jquery.js"></script>
 </head>
@@ -85,63 +84,6 @@
 		</div>
 	</section>
 
-	<script>
-		const documentRoot = document.querySelector(":root");
-		const darkModeSwitch = document.getElementById("dark_mode_switch");
-
-		const sideMenuButton = document.getElementsByClassName("menu-button")[0];
-		const sideMenu = document.getElementsByClassName("side-menu-section")[0];
-
-		darkModeSwitch.addEventListener("change", () => {
-			darkModeSwitch.checked;
-			if (darkModeSwitch.checked) {
-				documentRoot.classList.add("dark");
-				localStorage.setItem("pref-theme", "dark");
-			} else {
-				documentRoot.classList.remove("dark");
-				localStorage.setItem("pref-theme", "light");
-			}
-		});
-
-		function toggleSideMenu() {
-			let isOpen = sideMenuButton.classList.contains("open");
-
-			if (isOpen) {
-				sideMenuButton.classList.remove("open");
-				sideMenu.classList.remove("open");
-			} else {
-				sideMenuButton.classList.add("open");
-				sideMenu.classList.add("open");
-			}
-		}
-
-		(function checkForDarkMode() {
-			let hasDarkMode = (localStorage.getItem("pref-theme") == "dark");
-			if (hasDarkMode) {
-				documentRoot.classList.add("dark");
-				darkModeSwitch.checked = true;
-			}
-		})();
-
-		function toggleSideMenuOption() {
-			this.parentNode.classList.toggle("open");
-		}
-
-		(function() {
-			let sideOptionOpeners = sideMenu.getElementsByClassName("more-less");
-			for (const open of sideOptionOpeners) {
-				open.addEventListener("click", toggleSideMenuOption);
-			}
-
-			let sideMenuOptions = sideMenu.getElementsByClassName("menu-option-list");
-
-			for (const el of sideMenuOptions) {
-				el.style.setProperty("--my-max-height", el.scrollHeight + "px");
-			}
-		})();
-	</script>
-
-
 	<div id="main-content" style="min-height: 25rem;"></div>
 
 	<footer>
@@ -159,7 +101,7 @@
 				</div>
 			</div>
 			<div class="pages">
-				<span>Navigation</span>
+				<!-- <span>Navigation</span> -->
 				<div class="page-links">
 					<a href="#" class="plain">Page 1</a>
 					<a href="#" class="plain">Page 2</a>
@@ -173,3 +115,64 @@
 		</div>
 	</footer>
 </body>
+
+
+<!-- Header script -->
+<script>
+	const documentRoot = document.querySelector(":root");
+	const darkModeSwitch = document.getElementById("dark_mode_switch");
+
+	const sideMenuButton = document.getElementsByClassName("menu-button")[0];
+	const sideMenu = document.getElementsByClassName("side-menu-section")[0];
+
+	function toggleDarkMode() {
+		if (darkModeSwitch.checked) {
+			documentRoot.classList.add("dark");
+			localStorage.setItem("pref-theme", "dark");
+		} else {
+			documentRoot.classList.remove("dark");
+			localStorage.setItem("pref-theme", "light");
+		}
+	}
+
+	function toggleSideMenu() {
+		let isOpen = sideMenuButton.classList.contains("open");
+
+		if (isOpen) {
+			sideMenuButton.classList.remove("open");
+			sideMenu.classList.remove("open");
+		} else {
+			sideMenuButton.classList.add("open");
+			sideMenu.classList.add("open");
+		}
+	}
+
+	function toggleSideMenuOption() {
+		this.parentNode.classList.toggle("open");
+	}
+
+	{
+		let checkForDarkMode = () => {
+			let hasDarkMode = (localStorage.getItem("pref-theme") == "dark");
+			if (hasDarkMode) {
+				documentRoot.classList.add("dark");
+				darkModeSwitch.checked = true;
+			}
+		}
+
+		(function setHeaderStuff() {
+			darkModeSwitch.addEventListener("change", toggleDarkMode);
+			checkForDarkMode();
+
+			let sideOptionOpeners = sideMenu.getElementsByClassName("more-less");
+			for (const open of sideOptionOpeners) {
+				open.addEventListener("click", toggleSideMenuOption);
+			}
+
+			let sideMenuOptions = sideMenu.getElementsByClassName("menu-option-list");
+			for (const el of sideMenuOptions) {
+				el.style.setProperty("--my-max-height", el.scrollHeight + "px");
+			}
+		})();
+	}
+</script>
