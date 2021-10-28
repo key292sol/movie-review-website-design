@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="/media/images/favicon.png">
+
+	<title>KDReviews</title>
+
+	<!-- CSS stylesheets -->
+	<link rel="stylesheet" href="/css/animations.css">
+	<link rel="stylesheet" href="/css/header-styles.css">
+	<link rel="stylesheet" href="/css/footer-styles.css">
+
+	<link rel="stylesheet" href="/css/movie-info-styles.css">
+
+	<link rel="stylesheet" href="/css/fontawesome.css">
+	<link rel="stylesheet" href="/css/brands.css">
+	<link rel="stylesheet" href="/css/solid.css">
+
+	<script src="/js/jquery.js"></script>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="side-menu-button-cont">
+				<button class="menu-button" onclick="toggleSideMenu()">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<div class="logo">
+				<a class="logo-link" href="">
+					<img src="/media/images/logo.png" alt="KDReviews">
+				</a>
+			</div>
+			<div class="login-button-div">
+				<button class="login-button">Login</button>
+			</div>
+		</div>
+	</header>
+
+	<section class="side-menu-section">
+		<div class="side-menu">
+			<div class="search-wrap">
+				<input type="text" name="movie_name" class="movie-name-search" id="movie-name-search" placeholder="Search Movie">
+				<button id="movie-search-submit" class="fa fa-search movie-search-submit"></button>
+			</div>
+			<div class="dark-mode-wrap">
+				<span>Dark Mode</span>
+				<div class="dark-mode-switch">
+					<label for="dark_mode_switch" class="dark-switch-wrap">
+						<input type="checkbox" name="darkMode" id="dark_mode_switch">
+						<span class="switch"></span>
+					</label>
+				</div>
+			</div>
+			<div class="genres-wrap options-wrap">
+				<div class="menu-show-option">
+					<a href="javascript: void(0);" class="plain">Genres</a>
+					<a href="javascript: void(0);" class="more-less"></a>
+				</div>
+				<div class="menu-option-list">
+					<a href="javascript: void(0);" class="plain">Action</a>
+					<a href="javascript: void(0);" class="plain">Adventure</a>
+					<a href="javascript: void(0);" class="plain">Biography</a>
+					<a href="javascript: void(0);" class="plain">Comedy</a>
+					<a href="javascript: void(0);" class="plain">Romance</a>
+					<a href="javascript: void(0);" class="plain">Science Fiction</a>
+				</div>
+			</div>
+			<div class="lists-wrap options-wrap">
+				<div class="menu-show-option">
+					<a href="javascript: void(0);" class="plain">Your Lists</a>
+					<a href="javascript: void(0);" class="more-less"></a>
+				</div>
+				<div class="menu-option-list">
+					<a href="javascript: void(0);" class="plain">Watch Later</a>
+					<a href="javascript: void(0);" class="plain">Favourites</a>
+				</div>
+			</div>
+			<div><a href="#" class="plain">Request a movie</a></div>
+			<div><a href="#" class="plain">Send Feedback</a></div>
+		</div>
+	</section>
+
+	<div id="main-content">
+		<div class="movie-title">Movie Title</div>
+		<div class="movie-trailer" id="movie-trailer">
+			<video controls id="movie-trailer-video">
+				<source src="/media/videos/trailers/trailer-1.mov" type="video/mp4">
+			</video>
+		</div>
+		<div class="movie-details">
+			<div class="detail" id="movie-genre">
+				<span class="title">Genres</span>
+				<span class="info">Action, Fiction</span>
+			</div>
+			<div class="detail" id="movie-release-date">
+				<span class="title">Release data</span>
+				<span class="info">1/1/2001</span>
+			</div>
+			<div class="detail" id="movie-cast">
+				<span class="title">Cast</span>
+				<span class="info">Person 1, Person 2</span>
+			</div>
+			<div class="detail" id="movie-director">
+				<span class="title">Directors</span>
+				<span class="info">Director 1</span>
+			</div>
+			<div class="detail" id="movie-imdb">
+				<span class="title">IMDB rating</span>
+				<span class="info">9/10</span>
+			</div>
+			<div class="detail" id="movie-duration">
+				<span class="title">Duration</span>
+				<span class="info">1:20 h</span>
+			</div>
+			<div class="detail" id="movie-age-rating">
+				<span class="title">Age rating</span>
+				<span class="info">Normal</span>
+			</div>
+			<div class="detail" id="movie-user-rating">
+				<span class="title">User rating</span>
+				<span class="info">10/10</span>
+			</div>
+		</div>
+
+		<div class="movie-plot">
+			<div class="section-title">Movie Plot</div>
+			<div class="plot">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsam distinctio provident incidunt! Sequi voluptatem alias veniam quos, a, soluta expedita dignissimos similique nobis voluptatum error quibusdam laudantium nisi repudiandae!
+				Modi sunt omnis odit fugit a aut laboriosam vel natus debitis totam magnam voluptate ipsa iste tempore, officia, alias repellendus accusamus adipisci nam atque sed quasi. Sit quibusdam eveniet quis?
+				Suscipit ducimus, nihil itaque soluta omnis assumenda quae at quam iure dolores repellat. Maxime voluptatum labore consequatur ab quas iste, odio debitis possimus assumenda magnam aperiam, doloribus, omnis sunt saepe!
+			</div>
+		</div>
+
+		<div class="user-reviews-section">
+			<div class="section-title">User Reviews</div>
+			<div class="review-input-wrap">
+				<textarea name="review-inp-text" class="review-inp-text" id="review-inp-text" placeholder="Enter your review"></textarea>
+				<button class="review-inp-submit" id="review-inp-submit">Submit</button>
+			</div>
+			<div class="user-reviews">
+				<div class="review-body">
+					<div class="review-user">
+						<div class="user-avatar"></div>
+						<div class="review-info">
+							<div class="user-name">username</div>
+							<div>
+								<div class="rating">
+									<div class="fa fa-star full"></div>
+									<div class="fa fa-star full"></div>
+									<div class="fa fa-star-half-alt full"></div>
+									<div class="fa fa-star empty"></div>
+									<div class="fa fa-star empty"></div>
+								</div>
+								<div class="review-date-time">2/1/2001, 12:00</div>
+							</div>
+						</div>
+					</div>
+					<div class="review-text">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis alias aut ipsum itaque, laborum nihil harum corporis quis quidem, repellat vero voluptatibus corrupti, a cum magnam porro! Accusantium, veniam libero.
+					</div>
+				</div>
+				<div class="review-body">
+					<div class="review-user">
+						<div class="user-avatar"></div>
+						<div class="review-info">
+							<div class="user-name">username2</div>
+							<div>
+								<div class="rating">
+									<div class="fa fa-star full"></div>
+									<div class="fa fa-star full"></div>
+									<div class="fa fa-star full"></div>
+									<div class="fa fa-star empty"></div>
+									<div class="fa fa-star empty"></div>
+								</div>
+								<div class="review-date-time">2/1/2001, 12:01</div>
+							</div>
+						</div>
+					</div>
+					<div class="review-text">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis alias aut ipsum itaque, laborum nihil harum corporis quis quidem, repellat vero voluptatibus corrupti, a cum magnam porro! Accusantium, veniam libero.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<span class="goto-top">
+			<a href="#top" class="plain fa fa-arrow-up" title="Goto Top"></a>
+		</span>
+		<div class="footer">
+			<div class="contact-info">
+				<span>You can follow us on following social media platforms:</span>
+				<div class="social-links">
+					<a href="#" class="plain fab fa-facebook"></a>
+					<a href="#" class="plain fab fa-instagram"></a>
+					<a href="#" class="plain fab fa-twitter"></a>
+					<a href="#" class="plain fab fa-linkedin"></a>
+				</div>
+			</div>
+			<div class="pages">
+				<!-- <span>Navigation</span> -->
+				<div class="page-links">
+					<a href="#" class="plain">Page 1</a>
+					<a href="#" class="plain">Page 2</a>
+					<a href="#" class="plain">Page 3</a>
+				</div>
+				<div class="search-wrap">
+					<input type="text" name="movie_name" class="movie-name-search" id="footer-movie-name-search" placeholder="Search Movie">
+					<button id="footer-movie-search-submit" class="fa fa-search movie-search-submit"></button>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+
+<!-- Header script -->
+<script>
+	const documentRoot = document.querySelector(":root");
+	const darkModeSwitch = document.getElementById("dark_mode_switch");
+
+	const sideMenuButton = document.getElementsByClassName("menu-button")[0];
+	const sideMenu = document.getElementsByClassName("side-menu-section")[0];
+
+	function toggleDarkMode() {
+		if (darkModeSwitch.checked) {
+			documentRoot.classList.add("dark");
+			localStorage.setItem("pref-theme", "dark");
+		} else {
+			documentRoot.classList.remove("dark");
+			localStorage.setItem("pref-theme", "light");
+		}
+	}
+
+	function toggleSideMenu() {
+		let isOpen = sideMenuButton.classList.contains("open");
+
+		if (isOpen) {
+			sideMenuButton.classList.remove("open");
+			sideMenu.classList.remove("open");
+		} else {
+			sideMenuButton.classList.add("open");
+			sideMenu.classList.add("open");
+		}
+	}
+
+	function toggleSideMenuOption() {
+		this.parentNode.classList.toggle("open");
+	}
+
+	{
+		let checkForDarkMode = () => {
+			let hasDarkMode = (localStorage.getItem("pref-theme") == "dark");
+			if (hasDarkMode) {
+				documentRoot.classList.add("dark");
+				darkModeSwitch.checked = true;
+			}
+		}
+
+		(function setHeaderStuff() {
+			darkModeSwitch.addEventListener("change", toggleDarkMode);
+			checkForDarkMode();
+
+			let sideOptionOpeners = sideMenu.getElementsByClassName("more-less");
+			for (const open of sideOptionOpeners) {
+				open.addEventListener("click", toggleSideMenuOption);
+			}
+
+			let sideMenuOptions = sideMenu.getElementsByClassName("menu-option-list");
+			for (const el of sideMenuOptions) {
+				el.style.setProperty("--my-max-height", el.scrollHeight + "px");
+			}
+		})();
+	}
+</script>
+
+<!-- Page script -->
+<script>
+
+</script>

@@ -1,0 +1,205 @@
+#main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em;
+}
+
+#main-content > * {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.movie-title {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.movie-trailer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem !important;
+}
+
+.movie-trailer > * {
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid var(--primary-color);
+}
+
+.movie-details {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.movie-details .detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0.2em 0;
+}
+
+.movie-details .detail .title {
+  font-weight: bold;
+  margin-right: 1ch;
+}
+
+.movie-details .detail .title::after {
+  content: ':';
+  left: 100%;
+  right: 2ch;
+}
+
+.section-title {
+  font-size: 2em;
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 0.7rem;
+}
+
+.movie-plot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-reviews-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-reviews-section .review-input-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em 0;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.user-reviews-section .review-input-wrap .review-inp-text {
+  resize: none;
+  height: 5em;
+  padding: 0.5em 0.5em;
+  margin-bottom: 1em;
+  border-radius: 0.7em;
+}
+
+.user-reviews-section .review-input-wrap .review-inp-submit {
+  max-width: 10ch;
+  padding: 0.5em;
+  background-color: var(--color-light-blue2);
+  border-radius: 0.5em;
+}
+
+.user-reviews-section .review-input-wrap .review-inp-submit:hover {
+  background-color: var(--color-light-blue1);
+}
+
+.user-reviews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-reviews .review-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid var(--primary-color);
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.user-reviews .review-body .review-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 0.5em;
+}
+
+.user-reviews .review-body .review-user .user-avatar {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  margin-right: 1em;
+  background-color: blue;
+}
+
+.user-reviews .review-body .review-user .review-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.user-reviews .review-body .review-user .review-info .user-name {
+  font-size: 1.1em;
+}
+
+.user-reviews .review-body .review-user .review-info div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 0.9em;
+}
+
+.user-reviews .review-body .review-user .review-info div .rating .fa {
+  margin-right: 0.5em;
+}
+
+.user-reviews .review-body .review-user .review-info div .rating::before {
+  left: 100%;
+  right: 2ch;
+}
+/*# sourceMappingURL=movie-info-styles.css.map */

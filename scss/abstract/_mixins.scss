@@ -1,0 +1,27 @@
+@mixin roundSides {
+	border-radius: 9999px;
+}
+
+@mixin semiTransparentGray($value: 150, $alpha: 0.4) {
+	background-color: rgba($value, $value, $value, $alpha);
+}
+
+@mixin fontBorder {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@mixin blueButton {
+	background-color: var(--color-light-blue2);
+
+	&:hover {
+		background-color: var(--color-light-blue1);
+	}
+}
+
+@mixin positionAbsolute($top: 0px, $bottom: 0px, $left: 0px, $right: 0px) {
+	position: absolute;
+	top: $top;
+	bottom: $bottom;
+	left: $left;
+	right: $right;
+}

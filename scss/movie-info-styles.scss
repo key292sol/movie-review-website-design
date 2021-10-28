@@ -1,0 +1,167 @@
+@import 'abstract/mixins';
+
+$movieTitleSize: 3em;
+$sectionTitleSize: 2em;
+$sectionBottomMargin: 1rem;
+
+#main-content {
+	display: flex;
+	flex-direction: column;
+
+	padding: 1em;
+
+	& > * {
+		width: 100%;
+		margin-bottom: $sectionBottomMargin;
+	}
+}
+
+.movie-title {
+	font-size: $movieTitleSize;
+	font-weight: bold;
+
+	text-align: center;
+}
+
+.movie-trailer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin-bottom: $sectionBottomMargin + 1rem !important;
+
+	& > * {
+		width: 100%;
+		max-width: 1000px;
+		border: 1px solid var(--primary-color);
+	}
+}
+
+.movie-details {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	.detail {
+		display: flex;
+		flex-direction: row;
+
+		margin: 0.2em 0;
+
+		.title {
+			font-weight: bold;
+			margin-right: 1ch;
+
+			&::after {
+				content: ':';
+				left: 100%;
+				right: 2ch;
+			}
+		}
+	}
+}
+
+.section-title {
+	font-size: $sectionTitleSize;
+
+	border-bottom: 2px solid var(--primary-color);
+
+	margin-bottom: 0.7rem;
+}
+
+.movie-plot {
+	display: flex;
+	flex-direction: column;
+}
+
+.user-reviews-section {
+	display: flex;
+	flex-direction: column;
+
+	.review-input-wrap {
+		display: flex;
+		flex-direction: column;
+
+		padding: 1em 0;
+		border-bottom: 2px solid var(--primary-color);
+
+		.review-inp-text {
+			resize: none;
+			height: 5em;
+
+			padding: 0.5em 0.5em;
+			margin-bottom: 1em;
+
+			border-radius: 0.7em;
+		}
+
+		.review-inp-submit {
+			max-width: 10ch;
+			padding: 0.5em;
+
+			@include blueButton;
+
+			border-radius: 0.5em;
+		}
+	}
+}
+
+.user-reviews {
+	display: flex;
+	flex-direction: column;
+
+	.review-body {
+		display: flex;
+		flex-direction: column;
+
+		border: 1px solid var(--primary-color);
+
+		padding: 1em;
+		margin-top: 1em;
+
+		.review-user {
+			display: flex;
+			flex-direction: row;
+
+			margin-bottom: 0.5em;
+
+			.user-avatar {
+				width: 2.5em;
+				height: 2.5em;
+				border-radius: 50%;
+
+				margin-right: 1em;
+
+				background-color: blue;
+			}
+
+			.review-info {
+				display: flex;
+				flex-direction: column;
+
+				justify-content: space-around;
+
+				.user-name {
+					font-size: 1.1em;
+				}
+
+				div {
+					display: flex;
+					flex-direction: row;
+					font-size: 0.9em;
+
+					.rating {
+						.fa {
+							margin-right: 0.5em;
+						}
+					}
+
+					.rating::before {
+						left: 100%;
+						right: 2ch;
+					}
+				}
+
+			}
+		}
+	}
+}

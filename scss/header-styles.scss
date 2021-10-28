@@ -1,0 +1,178 @@
+@import "abstract/variables", "abstract/mixins";
+
+* {
+	box-sizing: border-box;
+	transition: background-color $transitionSpeed ease;
+}
+
+:root {
+	--color-light-blue1: #{$colorBlueLight1};
+	--color-light-blue2: #{$colorBlueLight2};
+
+	--star-color: yellowgreen;
+
+	--primary-bg-col: #{$colorWhite1};
+	--secondary-bg-col: #{$colorWhite2};
+	--primary-color: #{$colorBlack};
+	--secondary-color: #{$colorWhite};
+}
+
+:root.dark {
+	--color-light-blue1: #{$colorBlueLight2};
+	--color-light-blue2: #{$colorBlueLight1};
+
+	--star-color: yellow;
+
+	--primary-bg-col: #{$colorBlack1};
+	--secondary-bg-col: #{$colorBlack};
+	--primary-color: #{$colorWhite};
+	--secondary-color: #{$colorBlack};
+}
+
+html, body {
+	position: absolute;
+	min-width: fit-content;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	padding-top: $headerHeight;
+	background-color: var(--primary-bg-col);
+	color: var(--primary-color);
+}
+
+button {
+	cursor: pointer;
+}
+
+a.plain {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.fa-star.full, .fa-star-half.full, .fa-star-half-alt.full {
+	color: var(--star-color) !important;
+}
+
+.fa-star.empty, .fa-star-half.empty, .fa-star-half-alt.empty {
+	color: rgba(150, 150, 150, 0.4);
+}
+
+header {
+	@include positionAbsolute;
+	position: fixed;
+	z-index: 999;
+
+	width: 100%;
+	height: $headerHeight;
+	display: flex;
+	background-color: var(--secondary-bg-col);
+	border-bottom: 2px solid red;
+}
+
+.header {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+
+	& > * {
+		display: flex;
+	}
+
+	.side-menu-button-cont {
+		padding: 0.3em 0.7em;
+		justify-content: center;
+
+		.menu-button {
+			$size: $headerHeight - 0.7em;
+			width: $size;
+			height: $size;
+
+			margin: auto;
+			position: relative;
+			border: none;
+			// border: 1px solid red;
+			background: transparent;
+			border-radius: 0.5em;
+
+			&:hover {
+				background-color: rgba(150, 150, 150, 0.4);
+			}
+
+			.bar {
+				@include positionAbsolute;
+
+				width: 85%;
+				height: 13%;
+				margin: 0 auto;
+				background-color: var(--primary-color);
+
+				@include roundSides;
+
+				transition: 
+					top 0.5s,
+					transform 0.5s;
+			}
+
+			.bar:nth-child(1) {
+				top: 18%;
+			}
+
+			.bar:nth-child(2) {
+				top: 44%;
+			}
+
+			.bar:nth-child(3) {
+				top: 70%;
+			}
+		}
+
+		.menu-button.open {
+			.bar {
+				top: 50%;
+			}
+
+			.bar:nth-child(1), .bar:nth-child(3) {
+				transform: translateY(-50%) rotate(45deg);
+			}
+
+			.bar:nth-child(2) {
+				transform: translateY(-50%) rotate(-45deg);
+			}
+		}
+	}
+}
+
+.logo {
+	margin: 0 auto;
+
+	a {
+		display: flex;
+	}
+}
+
+.login-button-div {
+	padding: 0.5em;
+
+	.login-button {
+		@include roundSides;
+		@include blueButton;
+
+		font-size: 1.3em;
+
+		padding: 0 0.8em;
+		border: 2px solid blue;
+	}
+}
+
+
+@import "extras/side-menu";

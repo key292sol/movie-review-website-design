@@ -1,0 +1,3 @@
+class MovieData {
+	movies = Movie();
+}
