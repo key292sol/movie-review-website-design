@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../scss/movie-search-styles.scss"
+    ],
+    "names": [],
+    "file": "movie-search-styles.css"
+}
