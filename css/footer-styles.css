@@ -60,6 +60,14 @@ footer .goto-top a {
           justify-content: center;
 }
 
+.footer > * {
+  width: 0;
+  min-width: 16em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .footer > div:nth-child(1) {
   margin-right: 3em;
 }

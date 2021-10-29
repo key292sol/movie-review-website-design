@@ -50,6 +50,12 @@ footer {
 
 	justify-content: center;
 
+	& > * {
+		width: 0;
+		min-width: 16em;
+		flex: 1;
+	}
+
 	& > div:nth-child(1) {
 		margin-right: 3em;
 		// width: 100%;
