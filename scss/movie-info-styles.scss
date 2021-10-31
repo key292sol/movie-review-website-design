@@ -1,15 +1,10 @@
 @import 'abstract/mixins';
+@import 'abstract/variables';
 
-$movieTitleSize: 3em;
 $sectionTitleSize: 2em;
 $sectionBottomMargin: 1rem;
 
 #main-content {
-	display: flex;
-	flex-direction: column;
-
-	padding: 1em;
-
 	& > * {
 		width: 100%;
 		margin-bottom: $sectionBottomMargin;
@@ -17,7 +12,7 @@ $sectionBottomMargin: 1rem;
 }
 
 .movie-title {
-	font-size: $movieTitleSize;
+	font-size: $pageTitleSize;
 	font-weight: bold;
 
 	text-align: center;

@@ -13,8 +13,14 @@
 @mixin blueButton {
 	background-color: var(--color-light-blue2);
 
+	border: 1px solid blue;
+
 	&:hover {
 		background-color: var(--color-light-blue1);
+	}
+
+	&:active {
+		background-color: blue;
 	}
 }
 

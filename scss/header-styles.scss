@@ -176,3 +176,19 @@ header {
 
 
 @import "extras/side-menu";
+
+
+#main-content {
+	display: flex;
+	flex-direction: column;
+
+	padding: 1em;
+}
+
+.page-title {
+	width: 100%;
+
+	font-size: $pageTitleSize;
+
+	border-bottom: 2px solid var(--color-light-blue1);
+}
