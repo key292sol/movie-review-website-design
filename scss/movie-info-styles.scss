@@ -19,15 +19,20 @@ $sectionBottomMargin: 1rem;
 }
 
 .movie-trailer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	position: relative;
+
+	align-self: center;
+
+	width: 100%;
+	max-width: 1000px;
+	aspect-ratio: 16/9;
 
 	margin-bottom: $sectionBottomMargin + 1rem !important;
 
 	& > * {
+		@include positionAbsolute;
 		width: 100%;
-		max-width: 1000px;
+		height: 100%;
 		border: 1px solid var(--primary-color);
 	}
 }

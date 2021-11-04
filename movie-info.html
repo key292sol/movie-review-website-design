@@ -19,7 +19,11 @@
 	<link rel="stylesheet" href="./css/brands.css">
 	<link rel="stylesheet" href="./css/solid.css">
 
-	<script src="./js/jquery.js"></script>
+	<!-- Scripts -->
+	<script src="./js/MovieData.js"></script>
+
+	<script src="./js/HeaderJs.js" defer></script>
+	<script src="./js/MovieInfo.js" defer></script>
 </head>
 <body>
 	<header>
@@ -87,16 +91,14 @@
 	</section>
 
 	<div id="main-content">
-		<div class="movie-title">Movie Title</div>
-		<div class="movie-trailer" id="movie-trailer">
-			<video controls id="movie-trailer-video">
-				<source src="./media/videos/trailers/trailer-1.mov" type="video/mp4">
-			</video>
+		<div class="movie-title" id="movie-title">Movie Title</div>
+		<div class="movie-trailer">
+			<iframe src="" id="movie-trailer-video" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="movie-details">
 			<div class="detail" id="movie-genre">
 				<span class="title">Genres</span>
-				<span class="info">Action, Fiction</span>
+				<span class="info">All the genres</span>
 			</div>
 			<div class="detail" id="movie-release-date">
 				<span class="title">Release data</span>
@@ -110,30 +112,28 @@
 				<span class="title">Directors</span>
 				<span class="info">Director 1</span>
 			</div>
-			<div class="detail" id="movie-imdb">
-				<span class="title">IMDB rating</span>
-				<span class="info">9/10</span>
-			</div>
 			<div class="detail" id="movie-duration">
 				<span class="title">Duration</span>
-				<span class="info">1:20 h</span>
+				<span class="info">many minutes</span>
 			</div>
 			<div class="detail" id="movie-age-rating">
 				<span class="title">Age rating</span>
 				<span class="info">Normal</span>
 			</div>
+			<div class="detail" id="movie-imdb">
+				<span class="title">IMDB rating</span>
+				<span class="info">10/10</span>
+			</div>
 			<div class="detail" id="movie-user-rating">
 				<span class="title">User rating</span>
-				<span class="info">10/10</span>
+				<span class="info">5/5</span>
 			</div>
 		</div>
 
 		<div class="movie-plot">
 			<div class="section-title">Movie Plot</div>
-			<div class="plot">
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsam distinctio provident incidunt! Sequi voluptatem alias veniam quos, a, soluta expedita dignissimos similique nobis voluptatum error quibusdam laudantium nisi repudiandae!
-				Modi sunt omnis odit fugit a aut laboriosam vel natus debitis totam magnam voluptate ipsa iste tempore, officia, alias repellendus accusamus adipisci nam atque sed quasi. Sit quibusdam eveniet quis?
-				Suscipit ducimus, nihil itaque soluta omnis assumenda quae at quam iure dolores repellat. Maxime voluptatum labore consequatur ab quas iste, odio debitis possimus assumenda magnam aperiam, doloribus, omnis sunt saepe!
+			<div class="plot" id="movie-plot">
+				Some stuff happens
 			</div>
 		</div>
 
@@ -143,7 +143,7 @@
 				<textarea name="review-inp-text" class="review-inp-text" id="review-inp-text" placeholder="Enter your review"></textarea>
 				<button class="review-inp-submit" id="review-inp-submit">Submit</button>
 			</div>
-			<div class="user-reviews">
+			<div class="user-reviews" id="user-reviews">
 				<div class="review-body">
 					<div class="review-user">
 						<div class="user-avatar"></div>
@@ -223,69 +223,3 @@
 		</div>
 	</footer>
 </body>
-
-
-<!-- Header script -->
-<script>
-	const documentRoot = document.querySelector(":root");
-	const darkModeSwitch = document.getElementById("dark_mode_switch");
-
-	const sideMenuButton = document.getElementsByClassName("menu-button")[0];
-	const sideMenu = document.getElementsByClassName("side-menu-section")[0];
-
-	function toggleDarkMode() {
-		if (darkModeSwitch.checked) {
-			documentRoot.classList.add("dark");
-			localStorage.setItem("pref-theme", "dark");
-		} else {
-			documentRoot.classList.remove("dark");
-			localStorage.setItem("pref-theme", "light");
-		}
-	}
-
-	function toggleSideMenu() {
-		let isOpen = sideMenuButton.classList.contains("open");
-
-		if (isOpen) {
-			sideMenuButton.classList.remove("open");
-			sideMenu.classList.remove("open");
-		} else {
-			sideMenuButton.classList.add("open");
-			sideMenu.classList.add("open");
-		}
-	}
-
-	function toggleSideMenuOption() {
-		this.parentNode.classList.toggle("open");
-	}
-
-	{
-		let checkForDarkMode = () => {
-			let hasDarkMode = (localStorage.getItem("pref-theme") == "dark");
-			if (hasDarkMode) {
-				documentRoot.classList.add("dark");
-				darkModeSwitch.checked = true;
-			}
-		}
-
-		(function setHeaderStuff() {
-			darkModeSwitch.addEventListener("change", toggleDarkMode);
-			checkForDarkMode();
-
-			let sideOptionOpeners = sideMenu.getElementsByClassName("more-less");
-			for (const open of sideOptionOpeners) {
-				open.addEventListener("click", toggleSideMenuOption);
-			}
-
-			let sideMenuOptions = sideMenu.getElementsByClassName("menu-option-list");
-			for (const el of sideMenuOptions) {
-				el.style.setProperty("--my-max-height", el.scrollHeight + "px");
-			}
-		})();
-	}
-</script>
-
-<!-- Page script -->
-<script>
-
-</script>
