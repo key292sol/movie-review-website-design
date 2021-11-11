@@ -3,20 +3,28 @@ class MovieData {
 	static allMoviesList = [];
 
 	static get allGenres() {
-		return [
-			"Action",
-			"Adventure",
-			"Animation",
-			"Biopic",
-			"Comedy",
-			"Crime",
-			"Drama",
-			"Fantasy",
-			"Horror",
-			"Romance",
-			"Science Fiction",
-			"Thriller"
-		];
+		return {
+			"act": "Action",
+			"adv": "Adventure",
+			"ani": "Animation",
+			"bio": "Biopic",
+			"com": "Comedy",
+			"crm": "Crime",
+			"drm": "Drama",
+			"fan": "Fantasy",
+			"hor": "Horror",
+			"rom": "Romance",
+			"scf": "Science Fiction",
+			"thr": "Thriller"
+		};
+	}
+
+	static get genreKeys() {
+		return Object.keys(this.allGenres);
+	}
+
+	static get genreValues() {
+		return Object.values(this.allGenres);
 	}
 
 	static get allMovies() {
@@ -42,13 +50,9 @@ class MovieData {
 	static addMovie(name, trailer, poster, plot, genresList, releaseDate, castList, directorsList, imdbRating, durationMinutes, ageRating) {
 		this.idCount++;
 
-		let genres = this.allGenres;
-		let validGenres = genresList.map(
-			(value) => {
-				if (genres.includes(value)) {
-					return value;
-				}
-			}
+		let genres = this.genreKeys;
+		let validGenres = genresList.filter(
+			(value) => genres.includes(value)
 		);
 
 		let m = new Movie(this.idCount, name, trailer, poster, plot, validGenres, releaseDate, castList, directorsList, imdbRating, durationMinutes, ageRating);
@@ -56,50 +60,35 @@ class MovieData {
 	}
 
 	static searchByMovieNameNGenres(name = "", genreNames = [], offset = 0, limit = 20) {
+		name = name.toLowerCase();
 		let moviesFound = [];
 
-		for (const movie of this.allMoviesList) {
-			if (movie.name.indexOf(name) != 1) {
-				let hasGenres = genreNames.every(v => movie.genres.includes(v));
+		this.allMoviesList.forEach(
+			(movie) => {
+				if (movie.name.toLowerCase().indexOf(name) != -1) {
+					let hasGenres = genreNames.every(v => movie.genres.includes(v));
 
-				if (hasGenres) {
-					moviesFound.push(movie.getAsJSONObject());
+					if (hasGenres) {
+						moviesFound.push(movie.getAsJSONObject());
+					}
 				}
 			}
-		}
+		);
 
 		return moviesFound.slice(offset, limit);
 	}
 
 	static getMoviesOfGenre(genreName = "", offset = 0, limit = 20) {
-
 		// Check if the passed genre actually exists
-		let genre = "";
-		for (const g in this.allGenres) {
-			if (Object.hasOwnProperty.call(this.allGenres, g)) {
-				if (g === genreName) {
-					genre = genreName;
-					break;
-				}
-			}
-		}
+		let genre = this.genreKeys.find((v) => v === genreName);
 
-		if (genre != "") return null;
-		return this.searchByMovieName("", [genre], offset, limit);
+		if (!genre) return null;
+		return this.searchByMovieNameNGenres("", [genre], offset, limit);
 	}
 
 	static getMovieById(id = -1) {
-		if (id === -1) {
-			return null;
-		}
-
-		for (const movie of this.allMoviesList) {
-			if (movie.id === id) {
-				return movie.getAsJSONObject();
-			}
-		}
-
-		return null;
+		let m = this.allMoviesList.find((movie) => movie.id === id);
+		return (m === undefined) ? null : m.getAsJSONObject();
 	}
 }
 
@@ -135,7 +124,7 @@ class Movie {
 			"ytTrailerId": this.trailerLocation,
 			"poster": this.posterLocation,
 			"plot": this.plot,
-			"genres": this.genres,
+			"genres": this.genres.map(v => MovieData.allGenres[v]),
 			"releaseDate": this.releaseDate,
 			"cast": this.cast,
 			"directors": this.directors,
@@ -152,9 +141,9 @@ class Movie {
 		{
 			"name": "Avengers: Endgame",
 			"ytTrailerId": "TcMBFSGVi1c",
-			"poster": "",
+			"poster": "./media/images/posters/no-poster.jpg",
 			"plot": "Avengers - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est in libero ornare tempor. Cras convallis orci ut nunc interdum, tristique rutrum nisi suscipit. Morbi molestie id velit et rutrum. Suspendisse convallis orci nunc, vitae tempus erat mollis nec. Cras a blandit nunc, vel ullamcorper odio. Nam imperdiet mauris et leo euismod, euismod eleifend metus gravida. Cras ac tincidunt eros, id tristique sapien.",
-			"genres": ["Action", "Science Fiction"],
+			"genres": ["act", "scf"],
 			"release": new Date(2019, 4, 26),
 			"cast": ["Chris Evans", "Chris Hemsworth", "Robert Downey Jr."],
 			"directors": ["Anthony Russo", "Joey Russo"],
@@ -165,9 +154,9 @@ class Movie {
 		{
 			"name": "John Wick: Chapter 3 - Parabellum",
 			"ytTrailerId": "M7XM597XO94",
-			"poster": "",
+			"poster": "./media/images/posters/no-poster.jpg",
 			"plot": "John - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est in libero ornare tempor. Cras convallis orci ut nunc interdum, tristique rutrum nisi suscipit. Morbi molestie id velit et rutrum. Suspendisse convallis orci nunc, vitae tempus erat mollis nec. Cras a blandit nunc, vel ullamcorper odio. Nam imperdiet mauris et leo euismod, euismod eleifend metus gravida. Cras ac tincidunt eros, id tristique sapien.",
-			"genres": ["Action", "Crime", "Thriller"],
+			"genres": ["act", "crm", "thr"],
 			"release": new Date(2019, 5, 9),
 			"cast": ["Anjelica Houston", "Keanu Reaves"],
 			"directors": ["Chad Stahelski"],
@@ -178,9 +167,9 @@ class Movie {
 		{
 			"name": "A Silent Voice",
 			"ytTrailerId": "nfK6UgLra7g",
-			"poster": "",
+			"poster": "./media/images/posters/no-poster.jpg",
 			"plot": "Silent - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est in libero ornare tempor. Cras convallis orci ut nunc interdum, tristique rutrum nisi suscipit. Morbi molestie id velit et rutrum. Suspendisse convallis orci nunc, vitae tempus erat mollis nec. Cras a blandit nunc, vel ullamcorper odio. Nam imperdiet mauris et leo euismod, euismod eleifend metus gravida. Cras ac tincidunt eros, id tristique sapien.",
-			"genres": ["Animation", "Drama"],
+			"genres": ["ani", "drm"],
 			"release": new Date(2019, 6, 5),
 			"cast": ["Aoi Yuki", "Miyu Irino", "Saori Hayami"],
 			"directors": ["Aoi Yuki", "Koichi Yamadera"],
@@ -191,9 +180,9 @@ class Movie {
 		{
 			"name": "The Jungle Book",
 			"ytTrailerId": "HcgJRQWxKnw",
-			"poster": "",
+			"poster": "./media/images/posters/no-poster.jpg",
 			"plot": "Mowgli - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est in libero ornare tempor. Cras convallis orci ut nunc interdum, tristique rutrum nisi suscipit. Morbi molestie id velit et rutrum. Suspendisse convallis orci nunc, vitae tempus erat mollis nec. Cras a blandit nunc, vel ullamcorper odio. Nam imperdiet mauris et leo euismod, euismod eleifend metus gravida. Cras ac tincidunt eros, id tristique sapien.",
-			"genres": ["Adventure", "Fantasy"],
+			"genres": ["adv", "fan"],
 			"release": new Date(2016, 4, 15),
 			"cast": ["Bill Murray", "Christopher Walken"],
 			"directors": ["Jon Favreau"],
@@ -204,9 +193,9 @@ class Movie {
 		{
 			"name": "Harry Potter and the Goblet of Fire",
 			"ytTrailerId": "4xkFJgcCQRE",
-			"poster": "",
+			"poster": "./media/images/posters/no-poster.jpg",
 			"plot": "Magic - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est in libero ornare tempor. Cras convallis orci ut nunc interdum, tristique rutrum nisi suscipit. Morbi molestie id velit et rutrum. Suspendisse convallis orci nunc, vitae tempus erat mollis nec. Cras a blandit nunc, vel ullamcorper odio. Nam imperdiet mauris et leo euismod, euismod eleifend metus gravida. Cras ac tincidunt eros, id tristique sapien.",
-			"genres": ["Adventure", "Fantasy"],
+			"genres": ["adv", "fan"],
 			"release": new Date(2005, 11, 18),
 			"cast": ["Daniel Radcliffe", "Emma Watson"],
 			"directors": ["Mike Newell"],

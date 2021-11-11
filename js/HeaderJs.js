@@ -75,3 +75,7 @@ function getURLData(url) {
     }
     return parms;
 }
+
+function getFromThisURL() {
+	return getURLData(document.location.href);
+}

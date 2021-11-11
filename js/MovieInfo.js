@@ -2,9 +2,9 @@ function getDateString(d = new Date()) {
 	return d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
 }
 
-function setMovieDetails() {
+(function setMovieDetails() {
 	// Get movie Data
-	let movieId = getURLData(document.location.href)["id"] || 1;
+	let movieId = getFromThisURL()["id"] || -1;
 	movieId = Number.parseInt(movieId);
 	const movieData = MovieData.getMovieById(movieId);
 
@@ -38,6 +38,8 @@ function setMovieDetails() {
 		"plot": document.getElementById("movie-plot"),
 	};
 
+	console.table(movieData);
+
 	movieDetailsWraps["title"].innerHTML = movieData["name"];
 	movieDetailsWraps["trailerIframe"].setAttribute("src", "https://www.youtube.com/embed/" + movieData["ytTrailerId"]);
 	movieDetailsWraps["genre"].innerHTML = movieData["genres"].join(", ");
@@ -49,6 +51,4 @@ function setMovieDetails() {
 	movieDetailsWraps["imdb"].innerHTML = movieData["imdb"].toString() + "/10";
 	movieDetailsWraps["userRating"].innerHTML = avgRating;
 	movieDetailsWraps["plot"].innerHTML = movieData["plot"];
-}
-
-setMovieDetails();
+})();
