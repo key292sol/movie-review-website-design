@@ -11,14 +11,15 @@
 
 	z-index: 900;
 
-	display: flex;
 	display: none;
 	align-items: center;
 	justify-content: center;
 
 	padding: 2em;
 
-	// background-color: white;
+	&.open {
+		display: flex;
+	}
 
 	.filter-chooser {
 		position: relative;
@@ -29,6 +30,7 @@
 		max-width: 20em;
 		max-height: 100%;
 
+		overflow: auto;
 
 		padding: 1.5em;
 		padding-bottom: 0em;
@@ -45,12 +47,14 @@
 		}
 
 		.title {
+			order: 0;
 			font-size: 1.8em;
 			font-weight: bold;
 			text-transform: uppercase;
 		}
 
 		.apply-filters-wrap {
+			order: 4;
 			align-self: center;
 
 			.apply-filters-button {
@@ -66,26 +70,29 @@
 }
 
 .filters-list {
+	order: 1;
 	display: flex;
 	flex-direction: column;
 
-	overflow: auto;
+	.list-title {
+		font-size: 1.5rem;
+	}
+}
 
-	.filter-wrap {
+.filter-wrap {
+	cursor: pointer;
+	display: flex;
+
+	margin: 0.3em 0;
+	font-size: 1.1em;
+
+	& > * {
 		cursor: pointer;
-		display: flex;
+	}
 
-		margin: 0.3em 0;
-		font-size: 1.1em;
-
-		& > * {
-			cursor: pointer;
-		}
-
-		& > label {
-			width: 100%;
-			padding-left: 0.6em;
-		}
+	& > label {
+		width: 100%;
+		padding-left: 0.6em;
 	}
 }
 
