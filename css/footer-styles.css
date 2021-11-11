@@ -66,10 +66,11 @@ footer .goto-top a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin-right: 2em;
 }
 
-.footer > div:nth-child(1) {
-  margin-right: 3em;
+.footer > div:nth-last-child(1) {
+  margin-right: 0;
 }
 
 .contact-info {

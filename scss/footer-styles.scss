@@ -54,10 +54,11 @@ footer {
 		width: 0;
 		min-width: 16em;
 		flex: 1;
+		margin-right: 2em;
 	}
 
-	& > div:nth-child(1) {
-		margin-right: 3em;
+	& > div:nth-last-child(1) {
+		margin-right: 0;
 		// width: 100%;
 		// flex-grow: 1;
 	}
