@@ -10,9 +10,6 @@
   -webkit-backdrop-filter: blur(0.5em);
           backdrop-filter: blur(0.5em);
   z-index: 900;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -23,11 +20,18 @@
   padding: 2em;
 }
 
+.filter-chooser-section.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .filter-chooser-section .filter-chooser {
   position: relative;
   width: 100%;
   max-width: 20em;
   max-height: 100%;
+  overflow: auto;
   padding: 1.5em;
   padding-bottom: 0em;
   display: -webkit-box;
@@ -46,12 +50,18 @@
 }
 
 .filter-chooser-section .filter-chooser .title {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
   font-size: 1.8em;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .filter-chooser-section .filter-chooser .apply-filters-wrap {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -74,6 +84,9 @@
 }
 
 .filters-list {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,10 +94,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: auto;
 }
 
-.filters-list .filter-wrap {
+.filters-list .list-title {
+  font-size: 1.5rem;
+}
+
+.filter-wrap {
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -93,11 +109,11 @@
   font-size: 1.1em;
 }
 
-.filters-list .filter-wrap > * {
+.filter-wrap > * {
   cursor: pointer;
 }
 
-.filters-list .filter-wrap > label {
+.filter-wrap > label {
   width: 100%;
   padding-left: 0.6em;
 }
